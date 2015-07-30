@@ -23,11 +23,6 @@ class ProjectService
         $this->validator = $validator;
     }
 
-
-    public function index() {
-        return $this->repository->hidden(['user_id', 'client_id'])->with(['users', 'clients'])->all();
-    }
-
     public function create(array $data)
     {
         try {

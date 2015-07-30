@@ -12,6 +12,17 @@ class Project extends Model
         'name',
         'description',
         'progress',
-        'uo_date'
+        'duo_date'
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }
+
