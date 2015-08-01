@@ -6,6 +6,7 @@ use CodeProject\Repositories\ProjectRepository;
 use CodeProject\Services\ProjectService;
 use Illuminate\Http\Request;
 use CodeProject\Http\Requests;
+use Illuminate\Routing\Controller;
 
 class ProjectController extends Controller
 {
@@ -34,7 +35,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return $this->repository->with(['owner', 'client'])->all();
+        return $this->repository->all();
     }
 
     /**
@@ -56,7 +57,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->with(['owner', 'client'])->find($id);
+        return $this->service->show($id);
     }
 
     /**
@@ -68,7 +69,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->service->update($request->all(), $id);
+        return $this->service->update($request->all(), $id);
     }
 
     /**
@@ -79,6 +80,6 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $this->repository->find($id)->delete();
+        return $this->service->destroy($id);
     }
 }

@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $fillable = [
-        'user_id',
         'owner_id',
+        'client_id',
         'name',
         'description',
         'progress',
-        'duo_date'
+        'due_date'
     ];
 
     public function owner()
