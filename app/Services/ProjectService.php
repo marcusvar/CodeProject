@@ -27,7 +27,7 @@ class ProjectService
     public function show($id){
         try{
             return [
-                "success" => $this->repository->find($id)
+                "success" => $this->repository->with(['owner', 'client'])->find($id)
             ];
         } catch(ModelNotFoundException $e) {
             return [
