@@ -21,6 +21,7 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->smallInteger('progress');
+            $table->smallInteger('status');
             $table->dateTime('due_date');
             $table->timestamps();
         });
