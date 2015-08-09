@@ -35,5 +35,9 @@ class Project extends Model implements Transformable
         return $this->belongsTo(ProjectNote::class);
     }
 
+    public function members()
+    {
+        return $this->belongsTo(ProjectMembers::class);
+    }
 }
 
