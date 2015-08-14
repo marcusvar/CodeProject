@@ -12,6 +12,7 @@ class Project extends Model
         'name',
         'description',
         'progress',
+        'status',
         'due_date'
     ];
 
@@ -23,6 +24,11 @@ class Project extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(ProjectNote::class);
     }
 }
 

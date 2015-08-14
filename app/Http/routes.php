@@ -30,6 +30,12 @@ Route::delete('client/{id}', 'ClientController@destroy');
 //Alterar
 Route::put('client/{id}', 'ClientController@update');
 
+Route::get('project/{id}/note', 'ProjectNoteController@index');
+Route::post('project/{id}/note', 'ProjectNoteController@store');
+Route::get('project/{id}/note/{noteId}', 'ProjectNoteController@show');
+Route::put('project/{id}/note/{noteId}', 'ProjectNoteController@update');
+Route::delete('project/{id}/note/{noteId}', 'ProjectNoteController@destroy');
+
 /*
  *  Projetos
  */
