@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e225c88b-d268-4efc-a7ea-77fd50f872b3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectNoteController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Services/ProjectNoteService.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/seeds/ProjectNoteTableSeeder.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Validators/ProjectNoteValidator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_07_27_181058_create_projects_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_07_27_181058_create_projects_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/CodeProjectRepositoryProvider.php" afterPath="$PROJECT_DIR$/app/Providers/CodeProjectRepositoryProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/factories/ModelFactory.php" afterPath="$PROJECT_DIR$/database/factories/ModelFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Entities/Project.php" afterPath="$PROJECT_DIR$/app/Entities/Project.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/ProjectTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/ProjectTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2015_08_14_185225_create_project_notes_tables.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Entities/ProjectNote.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Repositories/ProjectNoteRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Repositories/ProjectNoteRepositoryEloquent.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Entities/ProjectTask.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Repositories/ProjectTaskRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Repositories/ProjectTaskRepositoryEloquent.php" />
     </list>
     <ignored path="codeproject-curso.iws" />
     <ignored path=".idea/workspace.xml" />
