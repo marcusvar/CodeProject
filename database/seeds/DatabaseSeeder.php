@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(ProjectTableSeeder::class);
         $this->call(\CodeProject\Entities\ProjectNote::class);
+        $this->call(\CodeProject\Entities\ProjectTask::class);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
         Model::reguard();

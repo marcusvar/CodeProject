@@ -2,26 +2,39 @@
 
 namespace CodeProject\Services;
 
-use CodeProject\Repositories\ProjectNoteRepository;
-use CodeProject\Validators\ProjectNoteValidator;
+use CodeProject\Repositories\ProjectTaskRepository;
+use CodeProject\Validators\ProjectTaskValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProjectNoteService
+class ProjectTaskService
 {
     /*
-     * @var ProjectNoteRepository
+     * @var ProjectTaskRepository
      */
     protected $repository;
     /**
-     * @var ProjectNoteValidator
+     * @var ProjectTaskValidator
      */
     private $validator;
 
-    public function __construct(ProjectNoteRepository $repository, ProjectNoteValidator $validator)
+    public function __construct(ProjectTaskRepository $repository, ProjectTaskValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
+    }
+
+    public function show($id){
+        try{
+            return [
+                "success" => $this->repository->with(['owner', 'client'])->find($id)
+            ];
+        } catch(ModelNotFoundException $e) {
+            return [
+                "success" => false,
+                "message" => "Cliente ID: {$id} inexistente!"
+            ];
+        }
     }
 
     public function create(array $data)
@@ -55,4 +68,16 @@ class ProjectNoteService
         }
     }
 
+    public function destroy($id)
+    {
+        try
+        {
+            return ["success" => $this->repository->delete($id)];
+        } catch(ModelNotFoundException $e){
+            return [
+                'success' => false,
+                'message' => 'Projeto inexistente!',
+            ];
+        }
+    }
 }

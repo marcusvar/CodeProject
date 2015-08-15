@@ -82,4 +82,31 @@ class ProjectController extends Controller
     {
         return $this->service->destroy($id);
     }
+
+    public function members($id)
+    {
+        return $this->repository->find($id)->members;
+    }
+
+    public function member($projectId, $memberId)
+    {
+        return $this->service->isMember($projectId, $memberId);
+    }
+
+    public function addMember(Request $request, $projectId)
+    {
+        return
+            [
+                'success' => $this->service->addMember($request->all())
+            ];
+    }
+
+    public function removeMember($projectId, $memberId)
+    {
+        return
+            [
+                'success' => $this->service->removeMember($projectId, $memberId)
+            ];
+    }
+
 }

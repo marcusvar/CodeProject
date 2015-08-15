@@ -15,19 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*
- * Clientes
- */
-
-//Listar
 Route::get('client', 'ClientController@index');
-//Salvar
 Route::post('client', 'ClientController@store');
-//Mostrar/Buscar
 Route::get('client/{id}', 'ClientController@show');
-// Excluir
 Route::delete('client/{id}', 'ClientController@destroy');
-//Alterar
 Route::put('client/{id}', 'ClientController@update');
 
 Route::get('project/{id}/note', 'ProjectNoteController@index');
@@ -36,17 +27,19 @@ Route::get('project/{id}/note/{noteId}', 'ProjectNoteController@show');
 Route::put('project/{id}/note/{noteId}', 'ProjectNoteController@update');
 Route::delete('project/{id}/note/{noteId}', 'ProjectNoteController@destroy');
 
-/*
- *  Projetos
- */
+Route::get('project/{id}/task', 'ProjectTaskController@index');
+Route::post('project/{id}/task', 'ProjectTaskController@store');
+Route::get('project/{id}/task/{noteId}', 'ProjectTaskController@show');
+Route::put('project/{id}/task/{noteId}', 'ProjectTaskController@update');
+Route::delete('project/{id}/task/{noteId}', 'ProjectTaskController@destroy');
 
-//Listar
+Route::get('project/{projectId}/member', 'ProjectController@members');
+Route::get('project/{projectId}/member/{memberId}', 'ProjectController@member');
+Route::post('project/{projectId}/member', 'ProjectController@addMember');
+Route::delete('project/{projectId}/member/{memberId}', 'ProjectController@removeMember');
+
 Route::get('project', 'ProjectController@index');
-//Salvar
 Route::post('project', 'ProjectController@store');
-//Mostrar/Buscar
 Route::get('project/{id}', 'ProjectController@show');
-// Excluir
 Route::delete('project/{id}', 'ProjectController@destroy');
-//Alterar
 Route::put('project/{id}', 'ProjectController@update');
