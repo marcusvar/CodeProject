@@ -20,5 +20,4 @@ class ProjectNote extends Model implements Transformable
     {
         return $this->belongsTo(Project::class);
     }
-
 }

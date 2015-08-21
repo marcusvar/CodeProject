@@ -24,19 +24,6 @@ class ProjectNoteService
         $this->validator = $validator;
     }
 
-    public function show($id){
-        try{
-            return [
-                "success" => $this->repository->with(['owner', 'client'])->find($id)
-            ];
-        } catch(ModelNotFoundException $e) {
-            return [
-                "success" => false,
-                "message" => "Cliente ID: {$id} inexistente!"
-            ];
-        }
-    }
-
     public function create(array $data)
     {
         try {
@@ -60,19 +47,6 @@ class ProjectNoteService
                 'success' => false,
                 'message' => $e->getMessageBag()
             ];
-        } catch(ModelNotFoundException $e){
-            return [
-                'success' => false,
-                'message' => 'Projeto inexistente!',
-            ];
-        }
-    }
-
-    public function destroy($id)
-    {
-        try
-        {
-            return ["success" => $this->repository->delete($id)];
         } catch(ModelNotFoundException $e){
             return [
                 'success' => false,

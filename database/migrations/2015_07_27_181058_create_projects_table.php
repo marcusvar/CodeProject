@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateProjectsTable extends Migration
 {
@@ -20,8 +21,8 @@ class CreateProjectsTable extends Migration
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('restrict')->onUpdate('cascade');
             $table->string('name');
             $table->text('description');
-            $table->smallInteger('progress');
-            $table->smallInteger('status');
+            $table->smallInteger('progress')->unsigned();
+            $table->smallInteger('status')->unsigned();
             $table->dateTime('due_date');
             $table->timestamps();
         });
@@ -38,6 +39,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('projects');
+        Schema::dropIfExists('projects');
     }
 }

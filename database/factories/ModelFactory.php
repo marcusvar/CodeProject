@@ -37,6 +37,26 @@ $factory->define(CodeProject\Entities\Project::class, function (Faker\Generator 
         'client_id' => rand(1,10),
         'name' => $faker->word,
         'description' => $faker->sentence,
+        'progress' => rand(1,99),
+        'status' => rand(1,3),
+        'due_date' => $faker->datetime('now'),
+    ];
+});
+
+$factory->define(CodeProject\Entities\ProjectNote::class, function ($faker) {
+    return [
+        'project_id' => rand(1,10),
+        'title' => $faker->word,
+        'note' => $faker->paragraph,
+    ];
+});
+
+$factory->define(CodeProject\Entities\ProjectTask::class, function ($faker) {
+    return [
+        'project_id' => rand(1,10),
+        'start_date' => $faker->datetime('now'),
+        'due_date' => $faker->datetime('now'),
+        'status' => rand(1,3),
         'progress' => rand(1,100),
         'status' => rand(1,3),
         'due_date' => $faker->dateTime('now')
@@ -58,5 +78,12 @@ $factory->define(CodeProject\Entities\ProjectTask::class, function (Faker\Genera
         'start_date' => $faker->dateTime('now'),
         'due_date' => $faker->dateTime('now'),
         'status' => rand(1,3)
+    ];
+});
+
+$factory->define(CodeProject\Entities\ProjectMember::class, function ($faker) {
+    return [
+        'project_id' => rand(1,10),
+        'user_id' => rand(1,10),
     ];
 });

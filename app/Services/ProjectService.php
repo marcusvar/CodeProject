@@ -3,6 +3,7 @@
 namespace CodeProject\Services;
 
 use CodeProject\Repositories\ProjectRepository;
+use CodeProject\Validators\ProjectMemberValidator;
 use CodeProject\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -18,10 +19,12 @@ class ProjectService
      */
     private $validator;
 
-    public function __construct(ProjectRepository $repository, ProjectValidator $validator)
+    public function __construct(ProjectRepository $repository, ProjectValidator $validator,
+                                ProjectMemberValidator $memberValidator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
+        $this->memberValidator = $memberValidator;
     }
 
     public function show($id){
@@ -77,6 +80,35 @@ class ProjectService
             return [
                 'success' => false,
                 'message' => 'Projeto inexistente!',
+            ];
+        }
+    }
+
+    public function isMember($projectId, $memberId)
+    {
+        return $this->repository->isMember($projectId, $memberId);
+    }
+
+    public function addMember($data){
+        try {
+            $this->memberValidator->with( $data )->passesOrFail();
+
+            return $this->repository->addMember($data['project_id'] ,$data['user_id']);
+        } catch (ValidatorException $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessageBag()
+            ];
+        }
+    }
+
+    public function removeMember($projectId, $memberId){
+        try {
+            return $this->repository->removeMember($projectId, $memberId);
+        } catch (ValidatorException $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessageBag()
             ];
         }
     }

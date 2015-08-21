@@ -55,9 +55,10 @@ class ProjectTaskController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id, $taskId)
+
+    public function show($projectId, $noteId)
     {
-        return $this->repository->findWhere(['project_id' => $id, 'id' => $taskId]);
+        return $this->repository->findWhere(['project_id' => $projectId, 'id' => $noteId]);
     }
 
     /**
@@ -67,6 +68,7 @@ class ProjectTaskController extends Controller
      * @param  int  $id
      * @return Response
      */
+
     public function update(Request $request, $id, $taskId)
     {
         return $this->service->update($request->all(), $taskId);
@@ -78,6 +80,7 @@ class ProjectTaskController extends Controller
      * @param  int  $id
      * @return Response
      */
+
     public function destroy($id, $taskId)
     {
         return $this->service->destroy($taskId);

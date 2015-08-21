@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateProjectNotesTable extends Migration
 {
@@ -29,6 +30,6 @@ class CreateProjectNotesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('project_notes');
+        Schema::dropIfExists('project_notes');
     }
 }
